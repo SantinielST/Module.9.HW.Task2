@@ -2,16 +2,13 @@
 {
     static class Cheker
     {
-        private static InsertValueException insertValueException = new InsertValueException("Некорректное значение! Попробуйте снова!");
+        private static InsertValueException insertValueException = new("Некорректное значение! Попробуйте снова!");
 
         public static int InsertInt()// Метод проверки ввода на число
         {
             try
             {
-                var n = int.Parse(Console.ReadLine());
-
-                return n;
-                throw insertValueException;
+                return int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
