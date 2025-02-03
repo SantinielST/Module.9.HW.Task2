@@ -48,13 +48,20 @@
             var answer = InsertInt();
             var validAnswers = new int[] { 1, 2 };
 
-            if (answer == validAnswers[0] || answer == validAnswers[1])
+            try
             {
-                return answer;
+                if (answer == validAnswers[0] || answer == validAnswers[1])
+                {
+                    return answer;
+                }
+                else
+                {
+                    throw insertValueException;
+                }
             }
-            else
+            catch (Exception)
             {
-                Console.WriteLine("Уточните, (\"1\" или \"2\"):");
+                Console.WriteLine(insertValueException.Message);
                 return CheckLine();
             }
         }
