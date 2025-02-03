@@ -2,27 +2,48 @@
 {
     static class Cheker
     {
+        private static InsertValueException insertValueException = new InsertValueException("Некорректное значение! Попробуйте снова!");
+
         public static int InsertInt()// Метод проверки ввода на число
         {
-            if (int.TryParse(Console.ReadLine(), out int result))
+            try
             {
-                return result;
-            }
+                var n = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Введите значение цифрами:");
-            return InsertInt();
+                return n;
+                throw insertValueException;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(insertValueException.Message);
+                return InsertInt();
+            }
         }
 
         public static string InsertString() // Метод проверки на пустую строку
         {
-            var insert = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(insert))
+            try
             {
-                return insert;
-            }
+                var insert = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(insert))
+                {
+                    foreach (var ch in insert)
+                    {
+                        if (char.IsNumber(ch))
+                        {
+                            throw insertValueException;
+                        }
+                    }
+                    return insert;
+                }
 
-            Console.WriteLine("Поле не должно быть пустым. Попробуйте ещё раз:");
-            return InsertString();
+                throw insertValueException;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine(insertValueException.Message);
+                return InsertString();
+            }
         }
 
         public static int CheckLine() // Метод проверки ответа для продолжения/завершения заказа
