@@ -2,6 +2,10 @@
 {
     class ArraySorter
     {
+        /// <summary>
+        /// Choose type sort array method
+        /// </summary>
+        /// <param name="lastNames"></param>
         public virtual void ChooseTypeSort(string[] lastNames)
         {
             Console.WriteLine("Сортировка происходит при введении: либо числа 1 (сортировка А-Я), либо числа 2 (сортировка Я-А):");
@@ -15,6 +19,10 @@
             }
         }
 
+        /// <summary>
+        /// Private method sort array by descending
+        /// </summary>
+        /// <param name="lastNames"></param>
         private void SortByDescending(string[] lastNames)
         {
             var sortedByDescending = lastNames.OrderDescending().ToArray();
@@ -25,6 +33,10 @@
             }
         }
 
+        /// <summary>
+        /// Private method sort array by increase
+        /// </summary>
+        /// <param name="lastNames"></param>
         private void SortByIncrease(string[] lastNames)
         {
             var sortedByIncrease = lastNames.Order().ToArray();

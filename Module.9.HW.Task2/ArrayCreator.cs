@@ -7,6 +7,10 @@
 
         private string[]? LastNames { get; set; }
 
+        /// <summary>
+        /// Method is will create array
+        /// </summary>
+        /// <param name="n"></param>
         public void AddLastNames(int n)
         {
             Console.WriteLine($"Сортировка списка фамилий из {n} человек:");
@@ -21,6 +25,10 @@
             ArraySortStarted(LastNames);
         }
 
+        /// <summary>
+        /// Method is will start event ArraySort
+        /// </summary>
+        /// <param name="lastNames"></param>
         protected virtual void ArraySortStarted(string[] lastNames)
         {
             ArraySort?.Invoke(lastNames);
